@@ -21,3 +21,5 @@ Spreading something as thin as possible
 Roguelike where you are a virus and you hop form host to host before your current host dies.
 A mechanic where you have to spread your attention more and more
 Surface Area
+platformer where platforms spread and threaten to crush the player
+player is a tile-based amorphous blob that has to absorb tokens to increase size. Kinda like Snake, but a blob instead of a line.
