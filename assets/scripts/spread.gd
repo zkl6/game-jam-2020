@@ -4,17 +4,28 @@ extends Node
 # var a = 2
 # var b = "text"
 var tilemap
-signal spread()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemap = self.get_parent()
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
+
+func _process(delta):
+	if AJP("ui_accept"):
+       _spread()
+
+
+#shortcut for Input.is_action_just_pressed
+func AJP(action):
+	return Input.is_action_just_pressed(action)
+	
+	
 
 func _spread():
 	#print (tilemap.get_used_cells())

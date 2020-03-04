@@ -19,6 +19,10 @@ config/name="Jamming Good Game"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Events="*res://assets/scripts/Events.gd"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
