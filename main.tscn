@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/Tileset.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/Level.gd" type="Script" id=2]
 [ext_resource path="res://assets/scripts/spread.gd" type="Script" id=3]
-[ext_resource path="res://assets/scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://Timer.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/PlayerController.gd" type="Script" id=4]
 
 [sub_resource type="TileSet" id=1]
 1/name = "Enemy"
@@ -48,23 +47,21 @@
 4/shapes = [  ]
 4/z_index = 0
 
-[node name="Node2D" type="Node2D"]
+[node name="Root" type="Node2D"]
 
 [node name="Level" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 0, 8, 4, 0, 9, 4, 0, 10, 4, 0, 11, 4, 0, 12, 4, 0, 13, 4, 0, 14, 4, 0, 15, 4, 0, 16, 4, 0, 17, 4, 0, 18, 4, 0, 19, 4, 0, 20, 4, 0, 21, 4, 0, 22, 4, 0, 65536, 4, 0, 65558, 4, 0, 131072, 4, 0, 131079, 2, 0, 131094, 4, 0, 196608, 4, 0, 196630, 4, 0, 262144, 4, 0, 262164, 1, 0, 262166, 4, 0, 327680, 4, 0, 327702, 4, 0, 393216, 4, 0, 393238, 4, 0, 458752, 4, 0, 458774, 4, 0, 524288, 4, 0, 524291, 1, 0, 524310, 4, 0, 589824, 4, 0, 589846, 4, 0, 655360, 4, 0, 655382, 4, 0, 720896, 4, 0, 720911, 1, 0, 720918, 4, 0, 786432, 4, 0, 786454, 4, 0, 851968, 4, 0, 851969, 4, 0, 851970, 4, 0, 851971, 4, 0, 851972, 4, 0, 851973, 4, 0, 851974, 4, 0, 851975, 4, 0, 851976, 4, 0, 851977, 4, 0, 851978, 4, 0, 851979, 4, 0, 851980, 4, 0, 851981, 4, 0, 851982, 4, 0, 851983, 4, 0, 851984, 4, 0, 851985, 4, 0, 851986, 4, 0, 851987, 4, 0, 851988, 4, 0, 851989, 4, 0, 851990, 4, 0 )
+tile_data = PoolIntArray( 0, 4, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 6, 4, 0, 7, 4, 0, 8, 4, 0, 9, 4, 0, 10, 4, 0, 11, 4, 0, 12, 4, 0, 13, 4, 0, 14, 4, 0, 15, 4, 0, 16, 4, 0, 17, 4, 0, 18, 4, 0, 19, 4, 0, 20, 4, 0, 21, 4, 0, 22, 4, 0, 65536, 4, 0, 65558, 4, 0, 131072, 4, 0, 131079, 2, 0, 131094, 4, 0, 196608, 4, 0, 196630, 4, 0, 262144, 4, 0, 262164, 1, 0, 262166, 4, 0, 327680, 4, 0, 327702, 4, 0, 393216, 4, 0, 393226, 3, 0, 393238, 4, 0, 458752, 4, 0, 458774, 4, 0, 524288, 4, 0, 524291, 1, 0, 524310, 4, 0, 589824, 4, 0, 589846, 4, 0, 655360, 4, 0, 655382, 4, 0, 720896, 4, 0, 720911, 1, 0, 720918, 4, 0, 786432, 4, 0, 786454, 4, 0, 851968, 4, 0, 851969, 4, 0, 851970, 4, 0, 851971, 4, 0, 851972, 4, 0, 851973, 4, 0, 851974, 4, 0, 851975, 4, 0, 851976, 4, 0, 851977, 4, 0, 851978, 4, 0, 851979, 4, 0, 851980, 4, 0, 851981, 4, 0, 851982, 4, 0, 851983, 4, 0, 851984, 4, 0, 851985, 4, 0, 851986, 4, 0, 851987, 4, 0, 851988, 4, 0, 851989, 4, 0, 851990, 4, 0 )
 script = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="Level"]
 script = ExtResource( 3 )
 
-[node name="Player" type="Node2D" parent="."]
+[node name="Player Controller" type="Node" parent="Level"]
 script = ExtResource( 4 )
-Position = Vector2( 5, 5 )
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-script = ExtResource( 5 )
-[connection signal="timeout" from="Timer" to="Timer" method="_on_timeout"]
+[node name="Entities" type="Node" parent="."]
+
+[node name="Game State" type="Node" parent="."]

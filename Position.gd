@@ -3,14 +3,8 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-signal player_position_updated
-signal set_player_position(vec2)
-signal can_move(boolean)
-
-#Expects direction player wants to move
-signal player_move_attempt(vec2)
-
-
+export var x: int
+export var y: int
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
