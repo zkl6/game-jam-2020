@@ -18,7 +18,7 @@ func _ready():
 
 func _process(delta):
 	if AJP("ui_accept"):
-       _spread()
+       get_parent().updateLevel()
 
 
 #shortcut for Input.is_action_just_pressed
