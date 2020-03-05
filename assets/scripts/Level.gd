@@ -23,6 +23,7 @@ func _ready():
 	#Events.connect("player_position_updated", self, "updatePlayerPos")
 	Events.emit_signal("set_player_position", playerPosition)
 	Events.connect("player_move_attempt", self, "_on_player_move_attempt")
+	Events.connect("update_level",self, "updateLevel")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

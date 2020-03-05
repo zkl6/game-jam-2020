@@ -6,6 +6,7 @@ extends Node
 signal player_position_updated
 signal set_player_position(vec2)
 signal can_move(boolean)
+signal update_level
 
 #Expects direction player wants to move
 signal player_move_attempt(vec2)
