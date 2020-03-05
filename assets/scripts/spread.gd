@@ -1,15 +1,12 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var tilemap
-
+#get tilemap node we want to hook into
+#Explanation: get NodePath from Inspector. onready, convert this into an actual node reference
+export(NodePath) onready var tilemap = get_node(tilemap)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tilemap = self.get_parent()
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

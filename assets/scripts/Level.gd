@@ -6,6 +6,7 @@ extends TileMap
 onready var playerPosition: Vector2
 onready var goalPosition: Vector2
 var tileNames: Dictionary
+export(NodePath) onready var spreader = get_node(spreader)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -46,7 +47,7 @@ func get_singleton_cell(name):
 	return .get_used_cells_by_id(name)[0]
 
 func updateLevel():
-	$Spreader._spread()
+	spreader._spread()
 	if playerPosition == goalPosition:
 		print("Winner!")
 	elif checkIfSurrounded():
