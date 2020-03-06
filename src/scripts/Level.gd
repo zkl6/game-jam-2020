@@ -14,8 +14,6 @@ func _ready():
 	#Get our tileNames so that we can treat the english names as a sort of enumerator through a dictionary
 	for each in self.tile_set.get_tiles_ids():
 		tileNames[self.tile_set.tile_get_name(each)] = each
-	tileNames.None = -1
-	print(tileNames.Uncovered)
 	
 	#Find the player cell to initialize player position. 
 	#Assumes single player cell. In case more than one exists, the first in the returned array is used.
@@ -31,9 +29,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
-	#get_tree().get_root().size = .get_used_rect().abs().size*16
-
 	pass
 
 	
@@ -62,6 +57,7 @@ func updateLevel():
 	elif Surrounded():
 		#print("Loser!")
 		Events.emit_signal("level_end", false)
+		levelEnd = true
 
 	
 func Surrounded():
