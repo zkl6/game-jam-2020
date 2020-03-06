@@ -7,6 +7,7 @@ onready var playerPosition: Vector2
 onready var goalPosition: Vector2
 var tileNames: Dictionary
 export(NodePath) onready var spreader = get_node(spreader)
+var levelEnd = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -52,14 +53,18 @@ func get_singleton_cell(name):
 
 func updateLevel():
 	spreader._spread()
+	if levelEnd:
+		return
 	if playerPosition == goalPosition:
-		Events.emit_signal("level_complete")
+		Events.emit_signal("level_end", true)
 		Events.emit_signal("player_control", false)
-		print("Winner!")
+		#print("Winner!")
+		levelEnd = true
 	elif checkIfSurrounded():
-		print("Loser!")
-		Events.emit_signal("level_fail")
+		#print("Loser!")
+		Events.emit_signal("level_end", false)
 		Events.emit_signal("player_control", false)
+		levelEnd = true
 	
 func checkIfSurrounded():
 	if isCellEmpty(above(playerPosition)) \

@@ -6,10 +6,11 @@ extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Events.connect("level_complete", self, "_on_level_complete")
+	Events.connect("level_end", self, "_on_level_complete")
 	
-func _on_level_complete():
-	.set_visible(true)
+func _on_level_complete(success):
+	if success:
+		.set_visible(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

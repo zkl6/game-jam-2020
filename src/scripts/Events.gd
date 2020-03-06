@@ -10,6 +10,8 @@ signal update_level
 signal level_complete
 signal level_fail
 signal player_control(boolean)
+signal level_end(boolean)
+signal restart_level
 
 #Expects direction player wants to move
 signal player_move_attempt(vec2)
