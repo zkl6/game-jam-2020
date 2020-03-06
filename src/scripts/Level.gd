@@ -4,9 +4,8 @@ extends TileMap
 # var a = 2
 # var b = "text"
 onready var playerPosition: Vector2
-onready var goalPosition: Vector2
 var tileNames: Dictionary
-export(NodePath) onready var spreader = get_node(spreader)
+##export(NodePath) onready var spreader = get_node(spreader)
 var levelEnd = false
 
 
@@ -16,11 +15,12 @@ func _ready():
 	for each in self.tile_set.get_tiles_ids():
 		tileNames[self.tile_set.tile_get_name(each)] = each
 	tileNames.None = -1
+	print(tileNames.Uncovered)
 	
 	#Find the player cell to initialize player position. 
 	#Assumes single player cell. In case more than one exists, the first in the returned array is used.
 	playerPosition = get_singleton_cell(tileNames.Player)
-	goalPosition = get_singleton_cell(tileNames.Goal)
+	
 	
 	#Events.connect("player_position_updated", self, "updatePlayerPos")
 	Events.emit_signal("set_player_position", playerPosition)
@@ -38,13 +38,13 @@ func _process(delta):
 
 	
 func updatePlayerPos(vec2):
-	self.set_cellv(playerPosition, tileNames.None)
+	self.set_cellv(playerPosition, tileNames.Covered)
 	playerPosition = vec2
 	self.set_cellv(playerPosition, tileNames.Player)
 	
 func _on_player_move_attempt(vec2):
 	var targetCell = get_singleton_cell(tileNames.Player)+vec2
-	if (.get_cellv(targetCell) == tileNames.None) or (.get_cellv(targetCell) == tileNames.Goal):
+	if isCellTraversable(targetCell):
 		updatePlayerPos(targetCell)
 		updateLevel()
 	
@@ -52,30 +52,28 @@ func get_singleton_cell(name):
 	return .get_used_cells_by_id(name)[0]
 
 func updateLevel():
-	spreader._spread()
 	if levelEnd:
 		return
-	if playerPosition == goalPosition:
-		Events.emit_signal("level_end", true)
+		
+	if levelComplete():
+		Events.emit_signal("level_end",true)
 		Events.emit_signal("player_control", false)
-		#print("Winner!")
 		levelEnd = true
-	elif checkIfSurrounded():
+	elif Surrounded():
 		#print("Loser!")
 		Events.emit_signal("level_end", false)
-		Events.emit_signal("player_control", false)
-		levelEnd = true
+
 	
-func checkIfSurrounded():
-	if isCellEmpty(above(playerPosition)) \
-	or isCellEmpty(below(playerPosition)) \
-	or isCellEmpty(leftOf(playerPosition)) \
-	or isCellEmpty(rightOf(playerPosition)):
+func Surrounded():
+	if isCellTraversable(above(playerPosition)) \
+	or isCellTraversable(below(playerPosition)) \
+	or isCellTraversable(leftOf(playerPosition)) \
+	or isCellTraversable(rightOf(playerPosition)):
 		return false
 	return true
 	
-func isCellEmpty(vec2):
-	return .get_cellv(vec2) == tileNames.None
+func isCellTraversable(vec2):
+	return .get_cellv(vec2) == tileNames.Uncovered
 
 func above(vec2):
 	return vec2+Vector2.UP
@@ -88,3 +86,8 @@ func leftOf(vec2):
 
 func rightOf(vec2):
 	return vec2+Vector2.RIGHT
+	
+func levelComplete():
+	if .get_used_cells_by_id(tileNames.Uncovered).size() == 0:
+		return true
+	return false
