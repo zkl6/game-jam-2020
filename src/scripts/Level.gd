@@ -26,10 +26,14 @@ func _ready():
 	Events.connect("player_move_attempt", self, "_on_player_move_attempt")
 	Events.connect("update_level",self, "updateLevel")
 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+
+	#get_tree().get_root().size = .get_used_rect().abs().size*16
+
+	pass
 
 	
 func updatePlayerPos(vec2):
@@ -49,9 +53,11 @@ func get_singleton_cell(name):
 func updateLevel():
 	spreader._spread()
 	if playerPosition == goalPosition:
+		Events.emit_signal("level_complete")
 		print("Winner!")
 	elif checkIfSurrounded():
 		print("Loser!")
+		Events.emit_signal("level_fail")
 	
 func checkIfSurrounded():
 	if isCellEmpty(above(playerPosition)) \

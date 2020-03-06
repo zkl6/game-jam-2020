@@ -33,4 +33,5 @@ restart_level={
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://src/resources/default_env.tres"
