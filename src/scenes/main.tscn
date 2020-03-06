@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/Tutorial_2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scripts/PlayerController.gd" type="Script" id=3]
-[ext_resource path="res://src/scenes/Success.gd" type="Script" id=4]
-[ext_resource path="res://src/scenes/Failure.gd" type="Script" id=5]
+[ext_resource path="res://src/scenes/GUICanvas.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -13,25 +12,4 @@ level = ExtResource( 2 )
 [node name="Player Controller" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="GUI" type="MarginContainer" parent="CanvasLayer"]
-margin_right = 1024.0
-margin_bottom = 14.0
-
-[node name="Success" type="Label" parent="CanvasLayer/GUI"]
-visible = false
-margin_right = 1024.0
-margin_bottom = 14.0
-text = "Success!"
-valign = 1
-percent_visible = -0.125
-script = ExtResource( 4 )
-
-[node name="Failure" type="Label" parent="CanvasLayer/GUI"]
-visible = false
-margin_right = 1024.0
-margin_bottom = 14.0
-text = "Failure."
-script = ExtResource( 5 )
+[node name="CanvasLayer" parent="." instance=ExtResource( 4 )]

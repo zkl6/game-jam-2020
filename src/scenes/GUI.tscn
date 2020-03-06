@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/scenes/Success.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/Failure.gd" type="Script" id=2]
+
+[node name="GUI" type="MarginContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -512.0
+margin_right = 512.0
+margin_bottom = 201.0
+
+[node name="Success" type="Label" parent="."]
+visible = false
+margin_top = 93.0
+margin_right = 1024.0
+margin_bottom = 107.0
+text = "Success!"
+align = 1
+valign = 1
+uppercase = true
+script = ExtResource( 1 )
+
+[node name="Failure" type="Label" parent="."]
+visible = false
+margin_top = 93.0
+margin_right = 1024.0
+margin_bottom = 107.0
+text = "Failure."
+align = 1
+valign = 1
+uppercase = true
+script = ExtResource( 2 )

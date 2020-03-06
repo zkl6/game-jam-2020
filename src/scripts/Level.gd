@@ -54,10 +54,12 @@ func updateLevel():
 	spreader._spread()
 	if playerPosition == goalPosition:
 		Events.emit_signal("level_complete")
+		Events.emit_signal("player_control", false)
 		print("Winner!")
 	elif checkIfSurrounded():
 		print("Loser!")
 		Events.emit_signal("level_fail")
+		Events.emit_signal("player_control", false)
 	
 func checkIfSurrounded():
 	if isCellEmpty(above(playerPosition)) \
