@@ -23,6 +23,8 @@ signal restart_level
 signal close_main_menu
 # warning-ignore:unused_signal
 signal load_level
+# warning-ignore:unused_signal
+signal load_main_menu
 
 #Expects direction player wants to move
 # warning-ignore:unused_signal
