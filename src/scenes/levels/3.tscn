@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/resources/BaseTileset.tres" type="TileSet" id=1]
+[ext_resource path="res://src/scripts/Level.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/levels/Go To Next Level.gd" type="Script" id=3]
+[ext_resource path="res://src/scripts/Restart Level Timer.gd" type="Script" id=4]
+[ext_resource path="res://src/scenes/GUICanvas.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scripts/PlayerController.gd" type="Script" id=6]
+
+[node name="Level" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 917531, 4, 0, 917532, 4, 0, 917533, 4, 0, 917534, 4, 0, 917535, 4, 0, 917536, 4, 0, 917537, 4, 0, 917538, 4, 0, 917539, 4, 0, 917540, 4, 0, 917541, 4, 0, 917542, 4, 0, 917543, 4, 0, 917544, 4, 0, 983067, 4, 0, 983068, 1, 0, 983069, 1, 0, 983070, 1, 0, 983071, 1, 0, 983072, 1, 0, 983073, 1, 0, 983074, 1, 0, 983075, 1, 0, 983076, 1, 0, 983077, 1, 0, 983078, 1, 0, 983079, 1, 0, 983080, 4, 0, 1048603, 4, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 1, 0, 1048608, 1, 0, 1048609, 1, 0, 1048610, 1, 0, 1048611, 1, 0, 1048612, 1, 0, 1048613, 1, 0, 1048614, 1, 0, 1048615, 1, 0, 1048616, 4, 0, 1114139, 4, 0, 1114140, 1, 0, 1114141, 3, 0, 1114142, 1, 0, 1114143, 1, 0, 1114144, 1, 0, 1114145, 1, 0, 1114146, 1, 0, 1114147, 1, 0, 1114148, 1, 0, 1114149, 1, 0, 1114150, 4, 0, 1114151, 1, 0, 1114152, 4, 0, 1179675, 4, 0, 1179676, 1, 0, 1179677, 1, 0, 1179678, 1, 0, 1179679, 1, 0, 1179680, 1, 0, 1179681, 1, 0, 1179682, 1, 0, 1179683, 1, 0, 1179684, 1, 0, 1179685, 1, 0, 1179686, 1, 0, 1179687, 1, 0, 1179688, 4, 0, 1245211, 4, 0, 1245212, 1, 0, 1245213, 1, 0, 1245214, 1, 0, 1245215, 1, 0, 1245216, 1, 0, 1245217, 1, 0, 1245218, 1, 0, 1245219, 1, 0, 1245220, 1, 0, 1245221, 1, 0, 1245222, 1, 0, 1245223, 1, 0, 1245224, 4, 0, 1310747, 4, 0, 1310748, 4, 0, 1310749, 4, 0, 1310750, 4, 0, 1310751, 4, 0, 1310752, 4, 0, 1310753, 4, 0, 1310754, 4, 0, 1310755, 4, 0, 1310756, 4, 0, 1310757, 4, 0, 1310758, 4, 0, 1310759, 4, 0, 1310760, 4, 0 )
+script = ExtResource( 2 )
+
+[node name="Go To Next Level" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+script = ExtResource( 3 )
+next_level = "1"
+
+[node name="Restart Level" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource( 6 )
+[connection signal="timeout" from="Go To Next Level" to="Go To Next Level" method="_on_timeout"]
+[connection signal="timeout" from="Restart Level" to="Restart Level" method="_on_timeout"]

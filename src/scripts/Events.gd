@@ -1,8 +1,4 @@
 extends Node
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 # warning-ignore:unused_signal
 signal player_position_updated
 # warning-ignore:unused_signal
@@ -25,6 +21,10 @@ signal close_main_menu
 signal load_level
 # warning-ignore:unused_signal
 signal load_main_menu
+# warning-ignore:unused_signal
+signal load_control_view
+# warning-ignore:unused_signal
+signal load_level_select
 
 #Expects direction player wants to move
 # warning-ignore:unused_signal

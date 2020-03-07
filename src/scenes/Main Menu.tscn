@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scenes/Main Menu.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/Start Game.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/Level Select.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/View Controls.gd" type="Script" id=4]
 
 [node name="Main Menu" type="MarginContainer"]
 anchor_left = 0.5
@@ -39,10 +41,12 @@ margin_top = 24.0
 margin_right = 290.0
 margin_bottom = 44.0
 text = "Level Select"
+script = ExtResource( 3 )
 
 [node name="View Controls" type="Button" parent="HBoxContainer/grid"]
 margin_top = 48.0
 margin_right = 290.0
 margin_bottom = 68.0
 text = "View Controls"
+script = ExtResource( 4 )
 [connection signal="pressed" from="HBoxContainer/grid/Start Game" to="HBoxContainer/grid/Start Game" method="_on_pressed"]

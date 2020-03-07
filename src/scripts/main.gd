@@ -32,6 +32,7 @@ func _process(delta):
 		_on_load_main_menu()
 
 func _on_load_level(name):
+	if level_is_in_memory(): level.queue_free()
 	level_resource = load("res://src/scenes/levels/" + name + ".tscn")
 	level = level_resource.instance()
 	add_child(level)
