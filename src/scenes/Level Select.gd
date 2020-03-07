@@ -10,5 +10,5 @@ func _ready():
 
 func _on_pressed():
 	Events.emit_signal("load_level_select")
-	Events.emit_signal("close_main_menu")
+	#Events.emit_signal("close_main_menu")
 	

@@ -18,7 +18,7 @@ script = ExtResource( 2 )
 wait_time = 2.0
 one_shot = true
 script = ExtResource( 3 )
-next_level = "1"
+next_level = "4"
 
 [node name="Restart Level" type="Timer" parent="."]
 wait_time = 2.0

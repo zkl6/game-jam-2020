@@ -39,9 +39,14 @@ func _on_load_level(name):
 
 func _on_load_main_menu():
 	if level_is_in_memory(): level.queue_free()
-	if not (menu and is_instance_valid(menu)): 
-		menu = menu_resource.instance()
-		add_child(menu)
+	if node_is_in_memory(menu):
+		menu.queue_free()
+	
+	menu = menu_resource.instance()
+	add_child(menu)
 
 func level_is_in_memory():
 	return level and is_instance_valid(level)
+
+func node_is_in_memory(node):
+	return node and is_instance_valid(node)
