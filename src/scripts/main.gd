@@ -46,7 +46,7 @@ func _on_load_main_menu():
 	add_child(menu)
 
 func level_is_in_memory():
-	return level and is_instance_valid(level)
+	return node_is_in_memory(level)
 
 func node_is_in_memory(node):
 	return node and is_instance_valid(node)
