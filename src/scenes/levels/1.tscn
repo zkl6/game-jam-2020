@@ -2,9 +2,9 @@
 
 [ext_resource path="res://src/resources/BaseTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/scripts/Level.gd" type="Script" id=2]
-[ext_resource path="res://src/scenes/Restart Level Timer.gd" type="Script" id=3]
-[ext_resource path="res://src/scenes/After Game Spread.gd" type="Script" id=4]
-[ext_resource path="res://src/scenes/GUICanvas.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scripts/Restart Level Timer.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/GUICanvas.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scripts/PlayerController.gd" type="Script" id=5]
 
 [node name="Level" type="TileMap"]
 tile_set = ExtResource( 1 )
@@ -23,10 +23,8 @@ wait_time = 2.0
 one_shot = true
 script = ExtResource( 3 )
 
-[node name="After Game Spread" type="Timer" parent="."]
-wait_time = 0.2
-script = ExtResource( 4 )
+[node name="CanvasLayer" parent="." instance=ExtResource( 4 )]
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource( 5 )
 [connection signal="timeout" from="Restart Level" to="Restart Level" method="_on_timeout"]
-[connection signal="timeout" from="After Game Spread" to="After Game Spread" method="_on_timeout"]

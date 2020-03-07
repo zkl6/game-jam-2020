@@ -1,12 +1,52 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/scripts/main.gd" type="Script" id=1]
-[ext_resource path="res://src/scenes/LevelTemplate.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/scripts/PlayerController.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/Main Menu.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/Start Game.gd" type="Script" id=3]
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node"]
 script = ExtResource( 1 )
-level = ExtResource( 2 )
 
-[node name="Player Controller" type="Node" parent="."]
+[node name="Main Menu" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -145.0
+margin_right = 145.0
+margin_bottom = 56.0
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Main Menu"]
+margin_right = 290.0
+margin_bottom = 86.0
+
+[node name="Title" type="Label" parent="Main Menu/HBoxContainer"]
+margin_right = 290.0
+margin_bottom = 14.0
+text = "Jamming Good Game"
+align = 1
+valign = 1
+
+[node name="grid" type="VBoxContainer" parent="Main Menu/HBoxContainer"]
+margin_top = 18.0
+margin_right = 290.0
+margin_bottom = 86.0
+alignment = 1
+
+[node name="Start Game" type="Button" parent="Main Menu/HBoxContainer/grid"]
+margin_right = 290.0
+margin_bottom = 20.0
+text = "Start Game"
 script = ExtResource( 3 )
+
+[node name="Level Select" type="Button" parent="Main Menu/HBoxContainer/grid"]
+margin_top = 24.0
+margin_right = 290.0
+margin_bottom = 44.0
+text = "Level Select"
+
+[node name="View Controls" type="Button" parent="Main Menu/HBoxContainer/grid"]
+margin_top = 48.0
+margin_right = 290.0
+margin_bottom = 68.0
+text = "View Controls"
+[connection signal="pressed" from="Main Menu/HBoxContainer/grid/Start Game" to="Main Menu/HBoxContainer/grid/Start Game" method="_on_pressed"]

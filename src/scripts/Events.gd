@@ -3,17 +3,29 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+# warning-ignore:unused_signal
 signal player_position_updated
+# warning-ignore:unused_signal
 signal set_player_position(vec2)
+# warning-ignore:unused_signal
 signal can_move(boolean)
+# warning-ignore:unused_signal
 signal update_level
+# warning-ignore:unused_signal
 signal level_complete
+# warning-ignore:unused_signal
 signal level_fail
-signal player_control(boolean)
+# warning-ignore:unused_signal
 signal level_end(boolean)
+# warning-ignore:unused_signal
 signal restart_level
+# warning-ignore:unused_signal
+signal close_main_menu
+# warning-ignore:unused_signal
+signal load_level
 
 #Expects direction player wants to move
+# warning-ignore:unused_signal
 signal player_move_attempt(vec2)
 
 
